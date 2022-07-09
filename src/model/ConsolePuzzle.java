@@ -13,7 +13,6 @@ public class ConsolePuzzle {
 		initPuzzle(w, h);
 	}
 	
-	//Tạo một mảng với số random bất kỳ từ 1 -> 8 ([3x3]=9 - 1 ô trống)
 	public void initPuzzle(int w, int h) {
 		int count = 0;
 		for(int i=0; i<w; i++) {
