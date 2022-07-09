@@ -14,11 +14,16 @@ public class ConsolePuzzle {
 	}
 	
 	public void initPuzzle(int w, int h) {
-		int count = 0;
+		int count = 1;
 		for(int i=0; i<w; i++) {
 			for(int j=0; j<h; j++) {
-				board[i][j] = count;
-				count++;
+				if(count != w*h) {
+					board[i][j] = count;
+					count++;
+				}
+				else {
+					board[i][j] = 0;
+				}
 			}
 		}
 		
@@ -30,6 +35,22 @@ public class ConsolePuzzle {
 		}
 	}
 	
+	public int getX(int n) {
+		for(int i=0; i<board.length; i++) {
+			for(int j=0; j<board[0].length; j++) {
+				if(board[i][j] == n) return i;
+			}
+		}
+		return -1;
+	}
 	
+	public int getY(int n) {
+		for(int i=0; i<board.length; i++) {
+			for(int j=0; j<board[0].length; j++) {
+				if(board[i][j] == n) return j;
+			}
+		}
+		return -1;
+	}
 	
 }
