@@ -12,6 +12,7 @@ public class Images {
 	HashMap<String, BufferedImage> list_imgs;
 	
 	public Images() {
+		list_imgs = new HashMap<String, BufferedImage>();
 		try {
 			BufferedImage img = ImageIO.read(new File("theme1.bmp"));
 			list_imgs.put("img_true", img.getSubimage(3, 2, 20, 20));
