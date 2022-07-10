@@ -26,6 +26,9 @@ public class BoardGame extends JPanel{
 		}
 		
 	}
+	public void up () {
+		
+	}
 	
 	
 
