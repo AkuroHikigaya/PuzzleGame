@@ -19,18 +19,12 @@ public class BoardGame extends JPanel{
 		PuzzleListener pl = new PuzzleListener(this);
 		for(int i=0; i<w; i++) {
 			for(int j=0; j<h; j++) {
-				String st_count = String.valueOf(count);
-				if(count == w*h) {
-//					jb_cell[i][j] = new JButton("0");
-					block[i][j] = new JBlock();
-					this.add(block[i][j]);
-				}
-				else {
-//					this.add(jb_cell[i][j] = new JButton(st_count));
-					this.add(block[i][j] = new JBlock());
-					count++;
-				}
-//				jb_cell[i][j].addActionListener(pl);				
+				block[i][j] = new JBlock("cell_true"); //IN REDCELL + R1
+//				if(count == w*h) {  // Biến đếm  = 4*4 = 16
+//					block[i][j].setState("cell_null");
+//				}
+				this.add(block[i][j]);
+				count++;
 			}
 		}
 		
