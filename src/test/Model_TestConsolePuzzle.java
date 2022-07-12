@@ -1,7 +1,6 @@
 package test;
 
 import model.ConsolePuzzle;
-import view.Cell;
 
 public class Model_TestConsolePuzzle {
 	
