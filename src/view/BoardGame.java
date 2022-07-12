@@ -10,11 +10,11 @@ import javax.swing.JPanel;
 import controller.PuzzleListener;
 
 public class BoardGame extends JPanel{
-	private JCell jb_cell[][];
+	private JBlock block[][];
 	
 	public BoardGame(int w, int h) {
 		int count = 1;
-		jb_cell = new JCell[w][h];
+		block = new JBlock[w][h];
 		this.setLayout(new GridLayout(w,h,0,0));
 		PuzzleListener pl = new PuzzleListener(this);
 		for(int i=0; i<w; i++) {
@@ -22,12 +22,12 @@ public class BoardGame extends JPanel{
 				String st_count = String.valueOf(count);
 				if(count == w*h) {
 //					jb_cell[i][j] = new JButton("0");
-					jb_cell[i][j] = new JCell();
-					this.add(jb_cell[i][j]);
+					block[i][j] = new JBlock();
+					this.add(block[i][j]);
 				}
 				else {
 //					this.add(jb_cell[i][j] = new JButton(st_count));
-					this.add(jb_cell[i][j] = new JCell());
+					this.add(block[i][j] = new JBlock());
 					count++;
 				}
 //				jb_cell[i][j].addActionListener(pl);				
