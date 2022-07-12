@@ -14,7 +14,7 @@ public class Images {
 	public Images() {
 		list_imgs = new HashMap<String, BufferedImage>();
 		try {
-			BufferedImage img = ImageIO.read(new File("src/resources/theme.png"));
+			BufferedImage img = ImageIO.read(new File("src/resources/theme.png"));	
 			list_imgs.put("blue_cell", img.getSubimage(1, 1, 150, 150));
 			list_imgs.put("red_cell", img.getSubimage(152, 1, 150, 150));
 			list_imgs.put("null_cell", img.getSubimage(303, 1, 150, 150));

@@ -64,8 +64,9 @@ public class Start extends JFrame {
 		
 		JLabel gif_img = new JLabel("");
 		gif_img.setLabelFor(contentPane);
-		gif_img.setIcon(new ImageIcon("image1_4.jpg"));
-		gif_img.setBounds(0, 10, 426, 253);
+		gif_img.setIcon(new ImageIcon("image1.jpg"));
+//		gif_img.setBounds(0, 10, 426, 253);
+		gif_img.setBounds(0,0, 430, 290);
 		contentPane.add(gif_img);
 		
 	}
