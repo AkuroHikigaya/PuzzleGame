@@ -14,10 +14,9 @@ public class Images {
 	public Images() {
 		list_imgs = new HashMap<String, BufferedImage>();
 		try {
-			BufferedImage img_true = ImageIO.read(new File("/PuzzleGame/src/resource/img_false.png"));
-//			BufferedImage img_false = ImageIO.read(new File("/PuzzleGame/src/resource/img_false.png"));
-			list_imgs.put("img_true", img_true);
-//			list_imgs.put("img_false", img_false);
+			BufferedImage img = ImageIO.read(new File("src/resources/img_true.png"));
+			list_imgs.put("img_true", img.getSubimage(0, 0, 150, 150));
+			list_imgs.put("img_false", img.getSubimage(0, 0, 150, 150));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

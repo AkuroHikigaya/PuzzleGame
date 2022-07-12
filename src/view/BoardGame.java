@@ -15,7 +15,7 @@ public class BoardGame extends JPanel{
 	public BoardGame(int w, int h) {
 		int count = 1;
 		jb_cell = new JCell[w][h];
-		this.setLayout(new GridLayout(w,h,3,3));
+		this.setLayout(new GridLayout(w,h,0,0));
 		PuzzleListener pl = new PuzzleListener(this);
 		for(int i=0; i<w; i++) {
 			for(int j=0; j<h; j++) {
