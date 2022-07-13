@@ -2,10 +2,13 @@ package view;
 
 import javax.swing.JFrame;
 
+import model.Images;
+
 public class Display extends JFrame{
 	private BoardGame boardGame;
 	public  Display (int w, int h) {
 		this.setTitle("Game Puzzle");
+		this.setIconImage(new Images().getList_imgs().get("img_icon"));
 //		this.setSize(600,600);
 		
 		boardGame = new BoardGame(w, h);

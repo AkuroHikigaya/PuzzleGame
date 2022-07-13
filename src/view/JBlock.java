@@ -36,7 +36,12 @@ public class JBlock extends JButton{
 			break;
 		case "cell_false":
 			g.drawImage(imgs.getList_imgs().get("blue_cell"), 0, 0, getPreferredSize().width, getPreferredSize().height, null);
-			g.drawImage(imgs.getList_imgs().get("b1"),  40, 40, 40, 40, null);
+			if(number<10) {
+				g.drawImage(imgs.getList_imgs().get("b"+String.valueOf(number)),  40, 40, 40, 40, null);				
+			}else {
+				g.drawImage(imgs.getList_imgs().get("b"+String.valueOf(number/10)),  20, 40, 40, 40, null);				
+				g.drawImage(imgs.getList_imgs().get("b"+String.valueOf(number%10)),  60, 40, 40, 40, null);	
+			}
 			break;
 		case "cell_null":
 			g.drawImage(imgs.getList_imgs().get("null_cell"), 0, 0, getPreferredSize().width, getPreferredSize().height, null);
@@ -63,5 +68,14 @@ public class JBlock extends JButton{
 		this.number = number;
 	}
 
+	public boolean isRight() {
+		return right;
+	}
+
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+
 	
+
 }
