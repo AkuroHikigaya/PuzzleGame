@@ -19,10 +19,12 @@ public class BoardGame extends JPanel{
 		PuzzleListener pl = new PuzzleListener(this);
 		for(int i=0; i<w; i++) {
 			for(int j=0; j<h; j++) {
-				block[i][j] = new JBlock("cell_true"); //IN REDCELL + R1
-//				if(count == w*h) {  // Biến đếm  = 4*4 = 16
-//					block[i][j].setState("cell_null");
-//				}
+				block[i][j] = new JBlock("cell_true",count); //IN REDCELL + R1
+				block[i][j].addMouseListener(pl);
+				if(count == w*h) {  // Biến đếm  = 4*4 = 16
+					block[i][j].setState("cell_null");
+					block[i][j].addMouseListener(pl);
+				}
 				this.add(block[i][j]);
 				count++;
 			}
@@ -30,8 +32,26 @@ public class BoardGame extends JPanel{
 		
 	}
 	
+	
+	
+	public JBlock[][] getBlock() {
+		return block;
+	}
+
+
+
+	public void setBlock(JBlock[][] block) {
+		this.block = block;
+	}
+
+
+
 	//Đổi cấu trúc 1 ô
 	public void setCell(JButton jb_cell, Color color) {
+		
+	}
+	
+	public void getCoor() {
 		
 	}
 	
@@ -39,28 +59,9 @@ public class BoardGame extends JPanel{
 		
 	}
 	
-//	
-//	
-//	public JButton[][] getJb_cell() {
-//		return jb_cell;
-//	}
-
-
-//
-//	public void setJb_cell(JButton[][] jb_cell) {
-//		this.jb_cell = jb_cell;
-//	}
-//	
-//	public void getCoor(String n) {
-//		for(int i=0; i<jb_cell.length; i++) {
-//			for(int j=0; j<jb_cell[0].length; j++) {
-//				if(jb_cell[i][j].getText() == n) {
-//					System.out.println(i + " " + j);
-//				}
-//			}
-//		}
-//	}
-
+	public int getNumber() {
+		return 1;
+	}
 
 //	public void up() {
 //		

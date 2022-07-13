@@ -11,7 +11,7 @@ public class Display extends JFrame{
 		boardGame = new BoardGame(w, h);
 		this.add(boardGame);
 		this.pack();
-		
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
