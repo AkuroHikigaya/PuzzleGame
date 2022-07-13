@@ -20,6 +20,30 @@ public class PuzzleListener implements MouseListener{
 			for(int j=0; j<board_game.getBlock()[0].length;j++) {
 				if(e.getSource() == board_game.getBlock()[i][j]) {
 					System.out.println("Đã click dô số: " + board_game.getBlock()[i][j].getNumber());
+					boolean exist=false;
+					for(int k=i-1 ; k<= i+1;k++) {
+						for(int l=j-1; l<= j+1; l++)
+						{
+							if(k>=0 && k<board_game.getBlock().length && l>=0 && l<board_game.getBlock()[0].length) {
+								
+								if(board_game.getBlock()[k][l].getNumber()==16) {
+									System.out.println("Da co so 16");
+									board_game.getBlock()[k][l].setState("cell_red");
+									board_game.getBlock()[k][l].setNumber(12);
+									board_game.getBlock()[k][l].repaint();
+
+									exist = true;
+							}
+						}
+						}
+					}
+					if(exist == true) {			
+//						String temp=board_game.getBlock()[i][j].;
+						int temp_i = board_game.getBlock()[i][j].getNumber();
+						board_game.getBlock()[i][j].setState("cell_null");
+						board_game.getBlock()[i][j].setNumber(16);
+						board_game.getBlock()[i][j].repaint();
+					}
 				}
 			}
 		}

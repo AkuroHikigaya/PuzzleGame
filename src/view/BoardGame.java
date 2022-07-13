@@ -78,4 +78,11 @@ public class BoardGame extends JPanel{
 //	public void right() {
 //		
 //	}
+//	MouseListener 
+//	public void swap () {
+//		
+//	}
+//	public boolean isExist (JBlock b) {
+//		for()
+//	}
 }
