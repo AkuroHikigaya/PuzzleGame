@@ -98,46 +98,36 @@ public class BoardGame extends JPanel{
 	}
 
 	public void moveUp() {
-
-		/**Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Có thể tham khảo từ dòng 50 PuzzleListener và moveLeft & moveRight ở dưới*/
+		for(int i=0 ; i<block.length;i++) {
+			for (int j=0; j<block[0].length; j++) {
+				if(block[i][j].getNumber()== this.block.length*this.block[0].length) {
+					if (i+1<block.length) {
+						setAttributeBlock(block[i][j], block[i+1][j].isRight(),block[i+1][j].getState(),block[i+1][j].getNumber());
+						setAttributeBlock(block[i+1][j], false, "null_cell", this.block.length*this.block[0].length);
+						block[i][j].repaint();
+						block[i+1][j].repaint();
+				
+					}
+				}
+			}
+		}
 	}
 
 	public void moveDown() {
-
-		/**Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Cần người viết thêm
-		 * Có thể tham khảo từ dòng 50 PuzzleListener và moveLeft & moveRight ở dưới*/
+		for(int i=0; i<block.length; i++) {
+			for(int j=0; j<block[0].length; j++) {
+				if(block[i][j].getNumber() == this.block.length*this.block[0].length) {
+					if(i-1>=0) {
+						setAttributeBlock(block[i][j], block[i-1][j].isRight(), block[i-1][j].getState(), block[i-1][j].getNumber());	
+						setAttributeBlock(block[i-1][j], false, "null_cell", this.block.length*this.block[0].length);			
+						block[i][j].repaint();
+						block[i-1][j].repaint();
+					
+					}
+				}
+			}
+		}
 	}
-
-
 	/**Di chuyển Block Null sang trái*/
 	public void moveLeft() {
 		//		Xác định block null

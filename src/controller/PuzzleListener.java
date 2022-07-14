@@ -30,14 +30,24 @@ public class PuzzleListener implements MouseListener, KeyListener{
 					if(i-1>=0) {
 						if(board_game.getBlock()[i-1][j].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							System.out.println("Có Block Null ở trên");
-							board_game.moveDown();
+//							board_game.moveDown();
+							board_game.setAttributeBlock(board_game.getBlock()[i-1][j], board_game.getBlock()[i][j].isRight(), board_game.getBlock()[i][j].getState(), board_game.getBlock()[i][j].getNumber());
+							board_game.setAttributeBlock(board_game.getBlock()[i][j], false, "null_cell", (board_game.getBlock().length)*(board_game.getBlock()[0].length));
+							board_game.getBlock()[i-1][j].repaint();
+							board_game.getBlock()[i][j].repaint();
+							System.out.println("Đã đổi");
 						}
 					}
 					/** Dưới*/
 					if(i+1<board_game.getBlock().length) {
 						if(board_game.getBlock()[i+1][j].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							System.out.println("Có Block Null ở dưới");
-							board_game.moveUp();
+//							board_game.moveUp();
+							board_game.setAttributeBlock(board_game.getBlock()[i+1][j], board_game.getBlock()[i][j].isRight(), board_game.getBlock()[i][j].getState(), board_game.getBlock()[i][j].getNumber());
+							board_game.setAttributeBlock(board_game.getBlock()[i][j], false, "null_cell", (board_game.getBlock().length)*(board_game.getBlock()[0].length));
+							board_game.getBlock()[i+1][j].repaint();
+							board_game.getBlock()[i][j].repaint();
+							System.out.println("Đã đổi");
 						}
 					}
 					/** Trái*/
