@@ -30,19 +30,20 @@ public class PuzzleListener implements MouseListener, KeyListener{
 					if(i-1>=0) {
 						if(board_game.getBlock()[i-1][j].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							System.out.println("Có Block Null ở trên");
+							board_game.moveDown();
 						}
 					}
 					/** Dưới*/
 					if(i+1<board_game.getBlock().length) {
 						if(board_game.getBlock()[i+1][j].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							System.out.println("Có Block Null ở dưới");
-							
+							board_game.moveUp();
 						}
 					}
 					/** Trái*/
 					if(j-1>=0) {
 						if(board_game.getBlock()[i][j-1].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
-							System.out.println("Có Block Null bên trái");
+							board_game.moveRight();
 						}
 					}
 					/** Phải*/
@@ -57,10 +58,10 @@ public class PuzzleListener implements MouseListener, KeyListener{
 							board_game.setAttributeBlock(board_game.getBlock()[i][j], false, "null_cell", (board_game.getBlock().length)*(board_game.getBlock()[0].length));
 							board_game.getBlock()[i][j+1].repaint();
 							board_game.getBlock()[i][j].repaint();
-							
 							System.out.println("Đã đổi");
 						}
 					}
+					
 				}
 			}
 		}
@@ -102,23 +103,22 @@ public class PuzzleListener implements MouseListener, KeyListener{
 
 		if (key == KeyEvent.VK_LEFT) {
 			System.out.println("Trái");
-			board_game.moveLeft();
+			board_game.moveRight();
 		}
 
 		if (key == KeyEvent.VK_RIGHT) {
 			System.out.println("Phải");
-			board_game.moveRight();
+			board_game.moveLeft();
 		}
 
 		if (key == KeyEvent.VK_UP) {
-			//	    	if((board_game.getBlock()[board_game.getBlock().length-1][board_game.getBlock()[0].length-1].getNumber() == board_game.getBlock().length*board_game.getBlock()[0].length)) {
-			//	    		System.out.println("UP!");
-			//	    	}
-			board_game.setAttributeBlock(board_game.getBlockNull(), false, null, key);
+			System.out.println("Trên");
+			board_game.moveDown();
 		}
 
 		if (key == KeyEvent.VK_DOWN) {
 			System.out.println("Dưới");
+			board_game.moveUp();
 		}
 	}
 

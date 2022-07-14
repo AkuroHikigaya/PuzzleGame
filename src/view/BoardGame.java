@@ -97,12 +97,44 @@ public class BoardGame extends JPanel{
 		block.setNumber(number);
 	}
 
-	public void up() {
+	public void moveUp() {
 
+		/**Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Có thể tham khảo từ dòng 50 PuzzleListener và moveLeft & moveRight ở dưới*/
 	}
 
-	public void down(int w, int h) {
+	public void moveDown() {
 
+		/**Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Cần người viết thêm
+		 * Có thể tham khảo từ dòng 50 PuzzleListener và moveLeft & moveRight ở dưới*/
 	}
 
 
@@ -144,14 +176,11 @@ public class BoardGame extends JPanel{
 						//Tô lại
 						block[i][j].repaint();
 						block[i][j+1].repaint();
+						//Nếu không có break thì dựa vào điều kiện for-if nó sẽ chạy tới cuối mảng
 						break;
 					}
 				}
 			}
 		}
 	}
-
-
-
-
 }
