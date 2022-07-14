@@ -11,7 +11,7 @@ import controller.PuzzleListener;
 
 public class BoardGame extends JPanel{
 	private JBlock block[][];
-	
+
 	public BoardGame(int w, int h) {
 		int count = 1;
 		block = new JBlock[w][h];
@@ -31,11 +31,11 @@ public class BoardGame extends JPanel{
 				count++;
 			}
 		}
-		
+
 	}
-	
-	
-	
+
+
+
 	public JBlock[][] getBlock() {
 		return block;
 	}
@@ -50,25 +50,25 @@ public class BoardGame extends JPanel{
 
 	//Đổi cấu trúc 1 ô
 	public void setCell(JButton jb_cell, Color color) {
-		
+
 	}
-	
+
 	public void getCoor() {
-		
+
 	}
-	
-	
+
+
 	public int getNumber() {
 		return 1;
 	}
-//Key Listener
+	//Key Listener
 	/**Kiểm tra xem có phải block_null hay không*/
 	public boolean isBlockNull(JBlock block) {
-		if(block.getState().equals("cell_null"))
+		if(block.getNumber() == this.block.length*this.block[0].length)
 			return true;
 		return false;
 	}
-	
+
 	/**Lấy Block Null*/
 	public JBlock getBlockNull() {
 		//cho 2 for chạy khi nào gặp cell_null thì return block chứa tọa độ 
@@ -81,7 +81,7 @@ public class BoardGame extends JPanel{
 		System.out.println("Không có Block Null, trả về block đầu");
 		return block[0][0];
 	}
-	
+
 	/**Thay đổi thuộc tính block 
 	 * <p>
 	 * Block muốn đỗi
@@ -96,37 +96,62 @@ public class BoardGame extends JPanel{
 		block.setState(state);
 		block.setNumber(number);
 	}
-	
+
 	public void up() {
-		
+
 	}
-	
+
 	public void down(int w, int h) {
-		
+
 	}
-	
-	public void left() {
-		
-	}
-	
-	public void right() {
-		
-	}
-//	MouseListener 
-	public void swap () {
-		
-	}
-	public boolean isExist (JBlock block, int i, int j) {
-		for(int k = i-1; k<=i+1; k++) {
-			for(int l = j-1; l<=j+1; l++) {
-				if(k>=0 && k<this.block.length && l>=0 && l<this.block[0].length) {
-					if(block.getNumber() == this.block.length*this.block[0].length) {
-						System.out.println("Đã có 16");
-						return true;
-				}
+
+
+	/**Di chuyển Block Null sang trái*/
+	public void moveLeft() {
+		//		Xác định block null
+		for(int i=0; i<block.length; i++) {
+			for(int j=0; j<block[0].length; j++) {
+				if(block[i][j].getNumber() == this.block.length*this.block[0].length) {// Nếu nó là block null
+//					System.out.println("Đã lấy được block null");
+					if(j-1>=0) {
+//						System.out.println("Đã vào điều kiện");
+						//Lấy block null đổi thành block bên trái
+						setAttributeBlock(block[i][j], block[i][j-1].isRight(), block[i][j-1].getState(), block[i][j-1].getNumber());	
+						//Lấy block bên trái đổi lại thành block null
+						setAttributeBlock(block[i][j-1], false, "null_cell", this.block.length*this.block[0].length);		
+						//Tô lại
+						block[i][j].repaint();
+						block[i][j-1].repaint();
+					}
 				}
 			}
 		}
-		return false;
 	}
+
+
+	public void moveRight() {
+//		Xác định block null
+		for(int i=0; i<block.length; i++) {
+			for(int j=0; j<block[0].length; j++) {
+				if(block[i][j].getNumber() == this.block.length*this.block[0].length) {// Nếu nó là block null
+//					System.out.println("Đã lấy được block null");
+					if(j+1<block[0].length) {
+//						System.out.println("Đã vào điều kiện");
+						//Lấy block null đổi thành block bên trái
+						setAttributeBlock(block[i][j], block[i][j+1].isRight(), block[i][j+1].getState(), block[i][j+1].getNumber());	
+						//Lấy block bên trái đổi lại thành block null
+						setAttributeBlock(block[i][j+1], false, "null_cell", this.block.length*this.block[0].length);		
+						//Tô lại
+						block[i][j].repaint();
+						block[i][j+1].repaint();
+						break;
+					}
+				}
+			}
+		}
+	}
+
+
+
+
 }

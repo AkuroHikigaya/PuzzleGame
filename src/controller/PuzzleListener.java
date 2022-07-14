@@ -46,7 +46,7 @@ public class PuzzleListener implements MouseListener, KeyListener{
 						}
 					}
 					/** Phải*/
-					if(j+1<board_game.getBlock().length) {
+					if(j+1<board_game.getBlock()[0].length) {
 						if(board_game.getBlock()[i][j+1].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							System.out.println("Có Block Null bên phải");
 							//Lấy Block Null Đổi thuộc tính thành block vừa click
@@ -56,15 +56,10 @@ public class PuzzleListener implements MouseListener, KeyListener{
 							//board_game.setAttributeBlock(Block vừa click, phần còn lại y vậy)
 							board_game.setAttributeBlock(board_game.getBlock()[i][j], false, "null_cell", (board_game.getBlock().length)*(board_game.getBlock()[0].length));
 							board_game.getBlock()[i][j+1].repaint();
+							board_game.getBlock()[i][j].repaint();
+							
+							System.out.println("Đã đổi");
 						}
-					}
-
-					if(exist == true) {			
-						//						String temp=board_game.getBlock()[i][j].;
-						int temp_i = board_game.getBlock()[i][j].getNumber();
-						board_game.getBlock()[i][j].setState("cell_null");
-						board_game.getBlock()[i][j].setNumber(16);
-						board_game.getBlock()[i][j].repaint();
 					}
 				}
 			}
@@ -107,10 +102,12 @@ public class PuzzleListener implements MouseListener, KeyListener{
 
 		if (key == KeyEvent.VK_LEFT) {
 			System.out.println("Trái");
+			board_game.moveLeft();
 		}
 
 		if (key == KeyEvent.VK_RIGHT) {
 			System.out.println("Phải");
+			board_game.moveRight();
 		}
 
 		if (key == KeyEvent.VK_UP) {
