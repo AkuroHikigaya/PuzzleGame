@@ -18,11 +18,21 @@ public class PuzzleListener implements MouseListener, KeyListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		//		System.out.println("Đang đè");
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
 		for(int i=0; i<board_game.getBlock().length; i++) {
 			for(int j=0; j<board_game.getBlock()[0].length;j++) {
 				if(e.getSource() == board_game.getBlock()[i][j]) {
-					System.out.println("Đã click dô số: " + board_game.getBlock()[i][j].getNumber()+
-							" Tọa độ: " + i + " " + j + " Lenght :" + board_game.getBlock().length);
+//					System.out.println("Đã click dô số: " + board_game.getBlock()[i][j].getNumber()+
+//							" Tọa độ: " + i + " " + j + " Lenght :" + board_game.getBlock().length);
 					boolean exist=false;
 					// Dò xem 4 góc có block null không
 
@@ -54,18 +64,6 @@ public class PuzzleListener implements MouseListener, KeyListener{
 				}
 			}
 		}
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		//		System.out.println("Đang đè");
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		//		System.out.println("Đã thả");
 	}
 
 	@Override

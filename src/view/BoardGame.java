@@ -32,15 +32,13 @@ public class BoardGame extends JPanel{
 					block[i][j].addMouseListener(pl);
 					block[i][j].addKeyListener(pl);
 					rule[i][j] = count;
-					randomBoard() ;
 				}
-				
 				this.add(block[i][j]);
 				rule[i][j] = count;
 				count++;
 			}
-			
 		}
+		randomBoard();
 		//Mượn chổ test rule
 				for(int i=0; i<w; i++) {
 					for(int j=0; j<h; j++) {
@@ -124,7 +122,6 @@ public class BoardGame extends JPanel{
 						setAttributeBlock(block[i][j], block[i+1][j].getState(),block[i+1][j].getNumber());
 						UpdateState(block, i, j);
 						setAttributeBlock(block[i+1][j], "null_cell", this.block.length*this.block[0].length);
-						System.out.println("Đây là hàm Down");
 						block[i][j].repaint();
 						block[i+1][j].repaint();
 						break;
@@ -142,7 +139,6 @@ public class BoardGame extends JPanel{
 						setAttributeBlock(block[i][j], block[i-1][j].getState(), block[i-1][j].getNumber());	
 						UpdateState(block, i, j);
 						setAttributeBlock(block[i-1][j], "null_cell", this.block.length*this.block[0].length);	
-						System.out.println("Đây là hàm UP");
 						block[i][j].repaint();
 						block[i-1][j].repaint();
 					}
@@ -197,8 +193,8 @@ public class BoardGame extends JPanel{
 	}
 	public void randomBoard() {
 		Random rand = new Random();
-		int index = 1+ rand.nextInt(4);
-		for(int i=0;i<100;i++) {
+		for(int i=0;i<1000;i++) {
+			int index = 1 + rand.nextInt(4);
 			switch (index) {
 			case 1: 
 				moveUp();
@@ -212,7 +208,6 @@ public class BoardGame extends JPanel{
 			case 4:
 				moveRight();
 				break;
-			
 			}
 		}
 	}
