@@ -105,6 +105,8 @@ public class PuzzleListener implements MouseListener, KeyListener{
 		if (key == KeyEvent.VK_DOWN) {
 			board_game.moveDown();
 		}
+		System.out.println("Hết một lượt bấm! ");
+		board_game.checkWin(board_game.getBlock().length, board_game.getBlock()[0].length);
 	}
 
 	@Override

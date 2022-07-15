@@ -21,9 +21,9 @@ public class Image {
 	public Image() {
 		hashImage = new HashMap<String, BufferedImage>();
 		try {
-			File f = new File("klee.gif");
+			File f = new File("src/resources/images/start_background.gif");
 			BufferedImage img = ImageIO.read(f);
-			hashImage.put("Klee", img);
+			hashImage.put("background", img);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
