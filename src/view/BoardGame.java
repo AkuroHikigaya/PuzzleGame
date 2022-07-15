@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -13,6 +14,7 @@ import controller.PuzzleListener;
 public class BoardGame extends JPanel{
 	private JBlock block[][];
 	private int rule[][];
+	
 
 	public BoardGame(int w, int h) {
 		int count = 1;
@@ -30,11 +32,14 @@ public class BoardGame extends JPanel{
 					block[i][j].addMouseListener(pl);
 					block[i][j].addKeyListener(pl);
 					rule[i][j] = count;
+					randomBoard() ;
 				}
+				
 				this.add(block[i][j]);
 				rule[i][j] = count;
 				count++;
 			}
+			
 		}
 		//Mượn chổ test rule
 				for(int i=0; i<w; i++) {
@@ -43,6 +48,8 @@ public class BoardGame extends JPanel{
 					}
 					System.out.println();
 				}
+				
+				
 	}
 
 	public JBlock[][] getBlock() {
@@ -188,4 +195,27 @@ public class BoardGame extends JPanel{
 			}
 		}
 	}
+	public void randomBoard() {
+		Random rand = new Random();
+		int index = 1+ rand.nextInt(4);
+		for(int i=0;i<100;i++) {
+			switch (index) {
+			case 1: 
+				moveUp();
+				break;
+			case 2:
+				moveDown();
+				break;
+			case 3:
+				moveLeft();
+				break;
+			case 4:
+				moveRight();
+				break;
+			
+			}
+		}
+	}
+	
+	
 }
