@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import model.Images;
 
 public class JBlock extends JButton{
-	private boolean right;
 	private Images imgs;
 	private String state;
 	private int number;
@@ -67,15 +66,5 @@ public class JBlock extends JButton{
 	public void setNumber(int number) {
 		this.number = number;
 	}
-
-	public boolean isRight() {
-		return right;
-	}
-
-	public void setRight(boolean right) {
-		this.right = right;
-	}
-
-	
 
 }

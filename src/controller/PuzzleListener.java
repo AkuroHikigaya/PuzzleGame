@@ -29,25 +29,13 @@ public class PuzzleListener implements MouseListener, KeyListener{
 					/** Trên*/
 					if(i-1>=0) {
 						if(board_game.getBlock()[i-1][j].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
-							System.out.println("Có Block Null ở trên");
-//							board_game.moveDown();
-							board_game.setAttributeBlock(board_game.getBlock()[i-1][j], board_game.getBlock()[i][j].isRight(), board_game.getBlock()[i][j].getState(), board_game.getBlock()[i][j].getNumber());
-							board_game.setAttributeBlock(board_game.getBlock()[i][j], false, "null_cell", (board_game.getBlock().length)*(board_game.getBlock()[0].length));
-							board_game.getBlock()[i-1][j].repaint();
-							board_game.getBlock()[i][j].repaint();
-							System.out.println("Đã đổi");
+							board_game.moveDown();
 						}
 					}
 					/** Dưới*/
 					if(i+1<board_game.getBlock().length) {
 						if(board_game.getBlock()[i+1][j].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
-							System.out.println("Có Block Null ở dưới");
-//							board_game.moveUp();
-							board_game.setAttributeBlock(board_game.getBlock()[i+1][j], board_game.getBlock()[i][j].isRight(), board_game.getBlock()[i][j].getState(), board_game.getBlock()[i][j].getNumber());
-							board_game.setAttributeBlock(board_game.getBlock()[i][j], false, "null_cell", (board_game.getBlock().length)*(board_game.getBlock()[0].length));
-							board_game.getBlock()[i+1][j].repaint();
-							board_game.getBlock()[i][j].repaint();
-							System.out.println("Đã đổi");
+							board_game.moveUp();
 						}
 					}
 					/** Trái*/
@@ -59,16 +47,7 @@ public class PuzzleListener implements MouseListener, KeyListener{
 					/** Phải*/
 					if(j+1<board_game.getBlock()[0].length) {
 						if(board_game.getBlock()[i][j+1].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
-							System.out.println("Có Block Null bên phải");
-							//Lấy Block Null Đổi thuộc tính thành block vừa click
-							//board_game.setAttributeBlock(Block null, lấy thuộc tính right trong block vừa click, lấy thuộc tính state trong block vừa click, lấy thuộc tính number trong block vừa click)
-							board_game.setAttributeBlock(board_game.getBlock()[i][j+1], board_game.getBlock()[i][j].isRight(), board_game.getBlock()[i][j].getState(), board_game.getBlock()[i][j].getNumber());
-							//Lấy Block vừa click, đổi lại thành null
-							//board_game.setAttributeBlock(Block vừa click, phần còn lại y vậy)
-							board_game.setAttributeBlock(board_game.getBlock()[i][j], false, "null_cell", (board_game.getBlock().length)*(board_game.getBlock()[0].length));
-							board_game.getBlock()[i][j+1].repaint();
-							board_game.getBlock()[i][j].repaint();
-							System.out.println("Đã đổi");
+							board_game.moveLeft();
 						}
 					}
 					
@@ -112,23 +91,19 @@ public class PuzzleListener implements MouseListener, KeyListener{
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_LEFT) {
-			System.out.println("Trái");
-			board_game.moveRight();
-		}
-
-		if (key == KeyEvent.VK_RIGHT) {
-			System.out.println("Phải");
 			board_game.moveLeft();
 		}
 
+		if (key == KeyEvent.VK_RIGHT) {
+			board_game.moveRight();
+		}
+
 		if (key == KeyEvent.VK_UP) {
-			System.out.println("Trên");
-			board_game.moveDown();
+			board_game.moveUp();
 		}
 
 		if (key == KeyEvent.VK_DOWN) {
-			System.out.println("Dưới");
-			board_game.moveUp();
+			board_game.moveDown();
 		}
 	}
 
