@@ -38,7 +38,7 @@ public class Start extends JFrame {
 	public Start() {
 		contentPane = new JPanel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+		setBounds(0, 0, 800, 600);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		this.setTitle("Game puzzle");
@@ -59,7 +59,7 @@ public class Start extends JFrame {
 		gif_img.setLabelFor(contentPane);
 		gif_img.setIcon(new ImageIcon("src/resources/images/start_background.gif"));
 //		gif_img.setBounds(0, 10, 426, 253);
-		gif_img.setBounds(0,0, 800, 600);
+		gif_img.setBounds(0,0, 1920, 1080);
 		contentPane.add(gif_img);
 		
 	}

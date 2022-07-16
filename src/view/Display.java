@@ -16,8 +16,6 @@ public class Display extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-		
-		
 	}
 	
 	
