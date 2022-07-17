@@ -13,12 +13,20 @@ public class JBlock extends JButton{
 	private Images imgs;
 	private String state;
 	private int number;
+	private int level;
 	
-	public JBlock(String s, int n) {
+	public JBlock(String s, int n, int l) {
 		state = s;
 		number = n;
 		imgs = new Images();
-		setPreferredSize(new Dimension(120,121));
+		level = l;
+		if(level == 1)
+			setPreferredSize(new Dimension(120,121));
+		else if(level == 2)
+			setPreferredSize(new Dimension(80,81));
+		else
+			setPreferredSize(new Dimension(60,61));
+			
 	}
 	
 	public void paint(Graphics g) {

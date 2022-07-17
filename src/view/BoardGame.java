@@ -24,11 +24,23 @@ public class BoardGame extends JPanel{
 		PuzzleListener pl = new PuzzleListener(this);
 		for(int i=0; i<w; i++) {
 			for(int j=0; j<h; j++) {
-				block[i][j] = new JBlock("cell_true",count); //IN REDCELL + R1
+				
+				if(w == 4)
+					block[i][j] = new JBlock("cell_true",count,1); //IN REDCELL + R1
+				else if(w==6)
+					block[i][j] = new JBlock("cell_true",count,2); //IN REDCELL + R1
+				else
+					block[i][j] = new JBlock("cell_true",count,3); //IN REDCELL + R1		
+				
 				block[i][j].addMouseListener(pl);
 				block[i][j].addKeyListener(pl);
 				if(count == w*h) {  // Biến đếm  = 4*4 = 16
-					block[i][j] = new JBlock("cell_null",count);
+					if(w == 4)
+						block[i][j] = new JBlock("cell_null",count,1);
+					else if(w==6)
+						block[i][j] = new JBlock("cell_null",count,2);
+					else
+						block[i][j] = new JBlock("cell_null",count,3);
 					block[i][j].addMouseListener(pl);
 					block[i][j].addKeyListener(pl);
 					rule[i][j] = count;
