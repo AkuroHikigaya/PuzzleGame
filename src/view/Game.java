@@ -17,7 +17,7 @@ public class Game extends JPanel{
 		setLayout(null);
 		
 		board_game = new BoardGame(w, h);
-		board_game.setBounds(100,100,480,480);
+		board_game.setBounds(50,50,480,480);
 		this.add(board_game);
 		
 		jb_back = new JButton("Level");

@@ -92,7 +92,6 @@ public class GamePlay extends JFrame{
 		if(level == 3)
 			levelHard();
 		game.getJb_back().addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				started(game);
