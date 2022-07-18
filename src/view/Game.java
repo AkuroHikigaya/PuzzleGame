@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Game extends JPanel{
-	private JLabel jl_frame; //Khung ngoài
+	private FrameGame jl_frame; //Khung ngoài
 	private JLabel jl_game_frame;//Khung trong
 	private JButton jb_back;
 	private BoardGame board_game;
@@ -17,16 +17,15 @@ public class Game extends JPanel{
 		setLayout(null);
 		
 		board_game = new BoardGame(w, h);
-		board_game.setBounds(50,50,480,480);
+		board_game.setBounds(60,60,480,480);
 		this.add(board_game);
 		
 		jb_back = new JButton("Level");
-		jb_back.setBounds(662, 471, 85, 21);
+		jb_back.setBounds(662, 471, 100, 40);
 		this.add(jb_back);
 		
-		jl_frame = new JLabel();
-		jl_frame.setIcon(new ImageIcon("src/resources/images/blue_frames.png"));
-		jl_frame.setBounds(0, 0, 786, 563);
+		jl_frame = new FrameGame();
+		jl_frame.setBounds(0, 0, 800, 600);
 		this.add(jl_frame);
 	}
 	public JButton getJb_back() {

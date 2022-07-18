@@ -3,6 +3,7 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 public class GamePlay extends JFrame{
@@ -20,13 +21,23 @@ public class GamePlay extends JFrame{
 			}
 		});
 		this.setBounds(startgame.getBounds());
-//		this.setResizable(false);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setUndecorated(true);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+		startgame.getQuit().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 	}
 	public static void main(String[] args) {
 		new GamePlay();
+	}
+	
+	public void exit(ActionListener actionListener) {
 	}
 	
 	public void started(JPanel rm) {
@@ -59,7 +70,19 @@ public class GamePlay extends JFrame{
 			}
 		});
 		
+		level.getJb_back().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				backToStart();
+			}
+		});
+		
 		this.setVisible(true);
+	}
+	
+	public void backToStart() {
+		dispose();
+		new GamePlay();
 	}
 	
 	public void levelEasy() {
