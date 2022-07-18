@@ -1,17 +1,22 @@
 package view;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import model.Images;
 public class GamePlay extends JFrame{
 	private StartGame startgame;
 	private Level level;
 	private Game game;
+	private Images img;
 	public GamePlay() {
 		this.setTitle("Game Puzzle");
+		this.setIconImage(new Images().getList_imgs().get("img_icon"));
 		startgame = new StartGame();
 		this.add(startgame);
 		startgame.getJb_start().addActionListener(new ActionListener() {
