@@ -11,6 +11,10 @@ public class Game extends JPanel{
 	private JLabel jl_game_frame;//Khung trong
 	private JButton jb_back;
 	private BoardGame board_game;
+	private JButton jb_mainmenu;
+	private JButton jb_pause;
+	private JButton jb_newgame;
+	private JButton jb_sound;
 	public Game(int w, int h) {
 		setBounds(100, 100, 800, 600);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -20,9 +24,27 @@ public class Game extends JPanel{
 		board_game.setBounds(60,60,480,480);
 		this.add(board_game);
 		
-		jb_back = new JButton("Level");
-		jb_back.setBounds(662, 471, 100, 40);
+		jb_newgame = new JButton("New Game");
+		jb_newgame.setBounds(630, 340, 100, 40);
+		this.add(jb_newgame);
+		
+		jb_pause = new JButton("Pause");
+		jb_pause.setBounds(630, 390, 100, 40);
+		this.add(jb_pause);
+		
+		jb_back = new JButton("Exit");
+		jb_back.setBounds(630, 440, 100, 40);
 		this.add(jb_back);
+		
+		jb_mainmenu = new JButton("Main Menu");
+		jb_mainmenu.setBounds(630, 490, 100, 40);
+		this.add(jb_mainmenu);
+		
+		jb_sound = new JButton("Sound");
+		jb_sound.setBounds(730, 30, 40, 40);
+		this.add(jb_sound);
+		
+		
 		
 		jl_frame = new FrameGame();
 		jl_frame.setBounds(0, 0, 800, 600);
