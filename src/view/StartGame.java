@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 public class StartGame extends JPanel {
 	private JLabel jl_start_background;
 	private StartButton jb_start;
-	private JButton quit;
+	private PowerButton quit;
 	public StartGame() {
 		setBounds(100, 100, 800, 600);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -46,8 +46,42 @@ public class StartGame extends JPanel {
 		});
 		this.add(jb_start);
 		
-		quit = new JButton("Quit");
-		quit.setBounds(10, 400, 50, 50);
+		quit = new PowerButton();
+		quit.setBounds(10, 540, 50, 50);
+		quit.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				quit.setLight(false);
+				quit.repaint();
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				quit.setLight(true);
+				quit.repaint();
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		this.add(quit);
 		
 		
@@ -62,7 +96,7 @@ public class StartGame extends JPanel {
 	public JButton getQuit() {
 		return quit;
 	}
-	public void setQuit(JButton quit) {
+	public void setQuit(PowerButton quit) {
 		this.quit = quit;
 	}
 	
