@@ -44,7 +44,8 @@ public class Game extends JPanel{
 		this.add(jb_mainmenu);
 		
 		jb_sound = new SoundButton();
-		jb_sound.setBounds(730, 30, 40, 40);
+		jb_sound.setBounds(720, 30, 50, 50);
+		jb_sound.setContentAreaFilled(false);
 		jb_sound.addMouseListener(new MouseListener() {
 			
 			@Override

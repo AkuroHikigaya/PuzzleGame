@@ -18,13 +18,13 @@ public class SoundButton extends JButton{
 	public SoundButton() {
 		light = false;
 		try {
-			sound_on = ImageIO.read(new File("src/resources/images/back.png"));
-			sound_light_on = ImageIO.read(new File("src/resources/images/back_light.png"));
+			sound_on = ImageIO.read(new File("src/resources/images/sound_button_on.png"));
+			sound_light_on = ImageIO.read(new File("src/resources/images/sound_button_on_light.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		setPreferredSize(new Dimension(100,40));
+		setPreferredSize(new Dimension(50,50));
 	}
 
 	public void paint(Graphics g) {
