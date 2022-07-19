@@ -3,6 +3,8 @@ package view;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -16,12 +18,10 @@ import controller.PuzzleListener;
 public class BoardGame extends JPanel{
 	private JBlock block[][];
 	private int rule[][];
-	private Timer count_time;
-	private JLabel time;
+	
+	
 	public BoardGame(int w, int h) {
-		// Bộ đếm
-		time = new JLabel("000");
-//		count_time = new 
+		
 		
 		int count = 1;
 		rule = new int[w][h];
