@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,14 +17,13 @@ import javax.swing.border.EmptyBorder;
 public class Game extends JPanel{
 	private FrameGame jl_frame; //Khung ngoài
 	private JLabel jl_game_frame;//Khung trong
-	private JButton jb_return;
+	private OnGameButton jb_return;
 	private BoardGame board_game;
-	private JButton jb_mainmenu;
-	private JButton jb_pause;
 	private Timer count_time;
 	private JLabel time;
 	private int clock_count;
-
+	private OnGameButton jb_mainmenu;
+	private OnGameButton jb_pause;
 	private OnGameButton jb_newgame;
 	private SoundButton jb_sound;
 
@@ -36,33 +37,49 @@ public class Game extends JPanel{
 		this.add(board_game);
 
 		// Bộ đếm
-		time = new JLabel("0");
+		time = new JLabel("0000");
+		time.setForeground(Color.WHITE);
+		time.setFont(new Font("Arial", Font.BOLD, 30));
 		clock_count = 0;
 		count_time = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clock_count++;
-				time.setText(String.valueOf(clock_count));		
+				if(Integer.valueOf(time.getText())<9)
+					time.setText("000" + String.valueOf(clock_count));		
+				else if(Integer.valueOf(time.getText())>=9&&Integer.valueOf(time.getText())<99)
+					time.setText("00" + String.valueOf(clock_count));
+				else if(Integer.valueOf(time.getText())>=99&&Integer.valueOf(time.getText())<999)
+					time.setText("0" + String.valueOf(clock_count));
+				else
+					time.setText(String.valueOf(clock_count));
 			}
 		});
-
-		time.setBounds(605, 100, 150, 50);
+		
+		count_time.start();
+		time.setBounds(670, 120, 150, 50);
 		this.add(time);
 
 		jb_newgame = new OnGameButton("New Game");
 		jb_newgame.setBounds(605, 290, 150, 50);
+		jb_newgame.setContentAreaFilled(false);
 		this.add(jb_newgame);
-
-		jb_pause = new JButton("Pause");
+		
+		jb_pause = new OnGameButton("Pause");
 		jb_pause.setBounds(605, 355, 150, 50);
+		jb_pause.setContentAreaFilled(false);
 		this.add(jb_pause);
 
-		jb_return = new JButton("Return");
+		
+		jb_return = new OnGameButton("Return");
 		jb_return.setBounds(605, 420, 150, 50);
+		jb_return.setContentAreaFilled(false);
 		this.add(jb_return);
 
-		jb_mainmenu = new JButton("Main Menu");
+		
+		jb_mainmenu = new OnGameButton("Main Menu");
 		jb_mainmenu.setBounds(605, 485, 150, 50);
+		jb_mainmenu.setContentAreaFilled(false);
 		this.add(jb_mainmenu);
 
 		jb_sound = new SoundButton();
@@ -117,19 +134,19 @@ public class Game extends JPanel{
 	public JButton getJb_return() {
 		return jb_return;
 	}
-	public void setJb_return(JButton jb_return) {
+	public void setJb_return(OnGameButton jb_return) {
 		this.jb_return = jb_return;
 	}
 	public JButton getJb_mainmenu() {
 		return jb_mainmenu;
 	}
-	public void setJb_mainmenu(JButton jb_mainmenu) {
+	public void setJb_mainmenu(OnGameButton jb_mainmenu) {
 		this.jb_mainmenu = jb_mainmenu;
 	}
 	public JButton getJb_pause() {
 		return jb_pause;
 	}
-	public void setJb_pause(JButton jb_pause) {
+	public void setJb_pause(OnGameButton jb_pause) {
 		this.jb_pause = jb_pause;
 	}
 	public JButton getJb_newgame() {

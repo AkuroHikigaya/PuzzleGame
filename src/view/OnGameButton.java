@@ -22,11 +22,9 @@ public class OnGameButton extends JButton {
 	private boolean light;
 	
 	
-	public OnGameButton (String s) {
-		
-		
+	public OnGameButton (String state) {
 			this.light = false;
-			this.state = s;
+			this.state = state;
 			try {
 				mainmenu_button = ImageIO.read(new File("src/resources/images/mainmenu_button.png"));
 				mainmenu_button_light = ImageIO.read(new File("src/resources/images/mainmenu_button_light.png"));
@@ -41,19 +39,16 @@ public class OnGameButton extends JButton {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			setPreferredSize(new Dimension(100,50));
+			setPreferredSize(new Dimension(150,50));
 		}
 	
 	
 	public void paint(Graphics g) {
-		OnGameButton new_game = new OnGameButton("New Game");
 		if(state.equals("New Game")) {
 			if(light)
 				g.drawImage(newgame_button_light, 0, 0, getPreferredSize().width, getPreferredSize().height, null);	
-			
 			else
 				g.drawImage(newgame_button, 0, 0, getPreferredSize().width, getPreferredSize().height, null);
-			
 		}
 		if(state.equals("Pause")) {
 			if(light)
