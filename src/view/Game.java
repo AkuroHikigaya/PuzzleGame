@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,7 +17,7 @@ public class Game extends JPanel{
 	private JButton jb_mainmenu;
 	private JButton jb_pause;
 	private JButton jb_newgame;
-	private JButton jb_sound;
+	private SoundButton jb_sound;
 	public Game(int w, int h) {
 		setBounds(100, 100, 800, 600);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -40,8 +43,47 @@ public class Game extends JPanel{
 		jb_mainmenu.setBounds(605, 485, 150, 50);
 		this.add(jb_mainmenu);
 		
-		jb_sound = new JButton("Sound");
-		jb_sound.setBounds(730, 30, 40, 40);
+		jb_sound = new SoundButton();
+		jb_sound.setBounds(720, 30, 50, 50);
+		jb_sound.setContentAreaFilled(false);
+		jb_sound.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				jb_sound.setLight(false);
+				jb_sound.repaint();
+				System.out.println("tắt ");
+				
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				jb_sound.setLight(true);
+				jb_sound.repaint();
+				System.out.println("sáng");
+				
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		this.add(jb_sound);
 		
 		
