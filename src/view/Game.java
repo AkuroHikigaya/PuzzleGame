@@ -119,7 +119,7 @@ public class Game extends JPanel{
 	public JButton getJb_sound() {
 		return jb_sound;
 	}
-	public void setJb_sound(JButton jb_sound) {
+	public void setJb_sound(SoundButton jb_sound) {
 		this.jb_sound = jb_sound;
 	}
 	
