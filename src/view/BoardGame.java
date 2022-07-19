@@ -6,17 +6,23 @@ import java.awt.GridLayout;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import controller.PuzzleListener;
 
 public class BoardGame extends JPanel{
 	private JBlock block[][];
 	private int rule[][];
-	
-
+	private Timer count_time;
+	private JLabel time;
 	public BoardGame(int w, int h) {
+		// Bộ đếm
+		time = new JLabel("000");
+//		count_time = new 
+		
 		int count = 1;
 		rule = new int[w][h];
 		block = new JBlock[w][h];

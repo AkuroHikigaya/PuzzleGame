@@ -16,7 +16,7 @@ public class Game extends JPanel{
 	private BoardGame board_game;
 	private JButton jb_mainmenu;
 	private JButton jb_pause;
-	private JButton jb_newgame;
+	private OnGameButton jb_newgame;
 	private SoundButton jb_sound;
 	public Game(int w, int h) {
 		setBounds(100, 100, 800, 600);
@@ -27,7 +27,7 @@ public class Game extends JPanel{
 		board_game.setBounds(60,60,480,480);
 		this.add(board_game);
 		
-		jb_newgame = new JButton("New Game");
+		jb_newgame = new OnGameButton("New Game");
 		jb_newgame.setBounds(605, 290, 150, 50);
 		this.add(jb_newgame);
 		
@@ -113,7 +113,7 @@ public class Game extends JPanel{
 	public JButton getJb_newgame() {
 		return jb_newgame;
 	}
-	public void setJb_newgame(JButton jb_newgame) {
+	public void setJb_newgame(OnGameButton jb_newgame) {
 		this.jb_newgame = jb_newgame;
 	}
 	public JButton getJb_sound() {

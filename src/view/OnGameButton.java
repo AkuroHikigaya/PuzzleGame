@@ -26,7 +26,7 @@ public class OnGameButton extends JButton {
 		
 		
 			this.light = false;
-			this.state = state;
+			this.state = s;
 			try {
 				mainmenu_button = ImageIO.read(new File("src/resources/images/mainmenu_button.png"));
 				mainmenu_button_light = ImageIO.read(new File("src/resources/images/mainmenu_button_light.png"));
@@ -41,7 +41,7 @@ public class OnGameButton extends JButton {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			setPreferredSize(new Dimension(100,40));
+			setPreferredSize(new Dimension(100,50));
 		}
 	
 	
