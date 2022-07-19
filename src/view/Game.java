@@ -12,10 +12,10 @@ import javax.swing.border.EmptyBorder;
 public class Game extends JPanel{
 	private FrameGame jl_frame; //Khung ngoài
 	private JLabel jl_game_frame;//Khung trong
-	private JButton jb_return;
+	private OnGameButton jb_return;
 	private BoardGame board_game;
-	private JButton jb_mainmenu;
-	private JButton jb_pause;
+	private OnGameButton jb_mainmenu;
+	private OnGameButton jb_pause;
 	private OnGameButton jb_newgame;
 	private SoundButton jb_sound;
 	public Game(int w, int h) {
@@ -29,18 +29,22 @@ public class Game extends JPanel{
 		
 		jb_newgame = new OnGameButton("New Game");
 		jb_newgame.setBounds(605, 290, 150, 50);
+		jb_newgame.setContentAreaFilled(false);
 		this.add(jb_newgame);
 		
-		jb_pause = new JButton("Pause");
+		jb_pause = new OnGameButton("Pause");
 		jb_pause.setBounds(605, 355, 150, 50);
+		jb_pause.setContentAreaFilled(false);
 		this.add(jb_pause);
 		
-		jb_return = new JButton("Return");
+		jb_return = new OnGameButton("Return");
 		jb_return.setBounds(605, 420, 150, 50);
+		jb_return.setContentAreaFilled(false);
 		this.add(jb_return);
 		
-		jb_mainmenu = new JButton("Main Menu");
+		jb_mainmenu = new OnGameButton("Main Menu");
 		jb_mainmenu.setBounds(605, 485, 150, 50);
+		jb_mainmenu.setContentAreaFilled(false);
 		this.add(jb_mainmenu);
 		
 		jb_sound = new SoundButton();
@@ -95,19 +99,19 @@ public class Game extends JPanel{
 	public JButton getJb_return() {
 		return jb_return;
 	}
-	public void setJb_return(JButton jb_return) {
+	public void setJb_return(OnGameButton jb_return) {
 		this.jb_return = jb_return;
 	}
 	public JButton getJb_mainmenu() {
 		return jb_mainmenu;
 	}
-	public void setJb_mainmenu(JButton jb_mainmenu) {
+	public void setJb_mainmenu(OnGameButton jb_mainmenu) {
 		this.jb_mainmenu = jb_mainmenu;
 	}
 	public JButton getJb_pause() {
 		return jb_pause;
 	}
-	public void setJb_pause(JButton jb_pause) {
+	public void setJb_pause(OnGameButton jb_pause) {
 		this.jb_pause = jb_pause;
 	}
 	public JButton getJb_newgame() {
