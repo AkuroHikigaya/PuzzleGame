@@ -16,6 +16,7 @@ public class StartGame extends JPanel {
 	private JLabel jl_start_background;
 	private StartButton jb_start;
 	private PowerButton quit;
+	private SoundEffect se;
 	public StartGame() {
 		setBounds(100, 100, 800, 600);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -38,6 +39,8 @@ public class StartGame extends JPanel {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				jb_start.setState(true);
+				se = new SoundEffect(".//src//resources//sounds//enter_soundtrack.wav");
+				se.play();
 				jb_start.repaint();
 			}
 			@Override
@@ -49,37 +52,26 @@ public class StartGame extends JPanel {
 		quit = new PowerButton();
 		quit.setBounds(10, 540, 50, 50);
 		quit.addMouseListener(new MouseListener() {
-			
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				quit.setLight(false);
 				quit.repaint();
-				
 			}
-			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				quit.setLight(true);
 				quit.repaint();
-				
+				se = new SoundEffect(".//src//resources//sounds//enter_soundtrack.wav");
+				se.play();
 			}
-			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 		});
 		this.add(quit);
@@ -90,7 +82,7 @@ public class StartGame extends JPanel {
 		jl_start_background.setBounds(0, 0, 800, 600);
 		this.add(jl_start_background);
 	}
-	public JButton getJb_start() {
+	public StartButton getJb_start() {
 		return jb_start;
 	}
 	public JButton getQuit() {

@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 public class Game extends JPanel{
 	private FrameGame jl_frame; //Khung ngoài
 	private JLabel jl_game_frame;//Khung trong
-	private JButton jb_back;
+	private JButton jb_return;
 	private BoardGame board_game;
 	private JButton jb_mainmenu;
 	private JButton jb_pause;
@@ -25,19 +25,19 @@ public class Game extends JPanel{
 		this.add(board_game);
 		
 		jb_newgame = new JButton("New Game");
-		jb_newgame.setBounds(630, 340, 100, 40);
+		jb_newgame.setBounds(605, 290, 150, 50);
 		this.add(jb_newgame);
 		
 		jb_pause = new JButton("Pause");
-		jb_pause.setBounds(630, 390, 100, 40);
+		jb_pause.setBounds(605, 355, 150, 50);
 		this.add(jb_pause);
 		
-		jb_back = new JButton("Exit");
-		jb_back.setBounds(630, 440, 100, 40);
-		this.add(jb_back);
+		jb_return = new JButton("Return");
+		jb_return.setBounds(605, 420, 150, 50);
+		this.add(jb_return);
 		
 		jb_mainmenu = new JButton("Main Menu");
-		jb_mainmenu.setBounds(630, 490, 100, 40);
+		jb_mainmenu.setBounds(605, 485, 150, 50);
 		this.add(jb_mainmenu);
 		
 		jb_sound = new JButton("Sound");
@@ -50,11 +50,35 @@ public class Game extends JPanel{
 		jl_frame.setBounds(0, 0, 800, 600);
 		this.add(jl_frame);
 	}
-	public JButton getJb_back() {
-		return jb_back;
+	public JButton getJb_return() {
+		return jb_return;
 	}
-	public void setJb_back(JButton jb_back) {
-		this.jb_back = jb_back;
+	public void setJb_return(JButton jb_return) {
+		this.jb_return = jb_return;
+	}
+	public JButton getJb_mainmenu() {
+		return jb_mainmenu;
+	}
+	public void setJb_mainmenu(JButton jb_mainmenu) {
+		this.jb_mainmenu = jb_mainmenu;
+	}
+	public JButton getJb_pause() {
+		return jb_pause;
+	}
+	public void setJb_pause(JButton jb_pause) {
+		this.jb_pause = jb_pause;
+	}
+	public JButton getJb_newgame() {
+		return jb_newgame;
+	}
+	public void setJb_newgame(JButton jb_newgame) {
+		this.jb_newgame = jb_newgame;
+	}
+	public JButton getJb_sound() {
+		return jb_sound;
+	}
+	public void setJb_sound(JButton jb_sound) {
+		this.jb_sound = jb_sound;
 	}
 	
 	

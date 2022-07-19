@@ -39,6 +39,7 @@ public class StartButton extends JButton{
 	public void setState(boolean state) {
 		this.light = state;
 	}
-
+	
+	
 	
 }

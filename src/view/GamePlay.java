@@ -6,29 +6,45 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-public class GamePlay extends JFrame{
+public class GamePlay{
+	private JFrame framegame;
 	private StartGame startgame;
 	private Level level;
 	private Game game;
+	private SoundEffect se;
+	private SoundEffect music_background;
 	public GamePlay() {
-		this.setTitle("Game Puzzle");
+		framegame = new JFrame();
+		framegame.setTitle("Game Puzzle");
 		startgame = new StartGame();
-		this.add(startgame);
+		framegame.add(startgame);
 		startgame.getJb_start().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				started(startgame);
+				startgame.getJb_start().setState(false);
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
 			}
 		});
-		this.setBounds(startgame.getBounds());
-		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setUndecorated(true);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
+		music_background = new SoundEffect(".//src//resources//sounds//main_soundtrack.wav");
+		music_background.play();
+		framegame.setBounds(startgame.getBounds());
+		framegame.setResizable(false);
+		framegame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		framegame.setUndecorated(true);
+		framegame.setLocationRelativeTo(null);
+		framegame.setVisible(true);
 		startgame.getQuit().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
 				System.exit(0);
 			}
 		});
@@ -37,18 +53,18 @@ public class GamePlay extends JFrame{
 		new GamePlay();
 	}
 	
-	public void exit(ActionListener actionListener) {
-	}
-	
 	public void started(JPanel rm) {
 		level = new Level();
-		this.remove(rm);
-		this.add(level);
+		framegame.remove(rm);
+		framegame.add(level);
 		
 		//Khi bấm vào Easy
 		level.getJb_easy().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				se = new SoundEffect(".//src//resources//sounds//startgame_soundtrack.wav");
+				se.play();
 				setLevel(1);
 			}
 		});
@@ -57,6 +73,8 @@ public class GamePlay extends JFrame{
 		level.getJb_normal().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//startgame_soundtrack.wav");
+				se.play();
 				setLevel(2);
 			}
 		});
@@ -66,6 +84,8 @@ public class GamePlay extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//startgame_soundtrack.wav");
+				se.play();
 				setLevel(3);
 			}
 		});
@@ -73,48 +93,52 @@ public class GamePlay extends JFrame{
 		level.getJb_back().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				backToStart();
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+				framegame.remove(level);
+				framegame.add(startgame);
+				startgame.repaint();
+				framegame.setVisible(true);
 			}
 		});
 		
-		this.setVisible(true);
+		framegame.setVisible(true);
 	}
 	
-	public void backToStart() {
-		dispose();
-		new GamePlay();
-	}
 	
 	public void levelEasy() {
 //		System.out.println("In level Easy");
 		game = new Game(4, 4);
-		this.remove(level);
-		this.add(game);
-		this.setVisible(true);
+		framegame.remove(level);
+		framegame.add(game);
+		framegame.setVisible(true);
 	}
 	public void levelNormal() {
 //		System.out.println("In level Normal");
 		game = new Game(6, 6);
-		this.remove(level);
-		this.add(game);
-		this.setVisible(true);
+		framegame.remove(level);
+		framegame.add(game);
+		framegame.setVisible(true);
 	}
 	public void levelHard() {
 //		System.out.println("In level Hard");
 		game = new Game(8, 8);
-		this.remove(level);
-		this.add(game);
-		this.setVisible(true);
+		framegame.remove(level);
+		framegame.add(game);
+		framegame.setVisible(true);
 	}
 	
 	public void setLevel(int level) {
+		music_background.stop();
+		music_background = new SoundEffect(".//src//resources//sounds//play_soundtrack_1.wav");
+		music_background.play();
 		if(level == 1) 
 			levelEasy();
 		if(level == 2)
 			levelNormal();
 		if(level == 3)
 			levelHard();
-		game.getJb_back().addActionListener(new ActionListener() {
+		game.getJb_return().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				started(game);

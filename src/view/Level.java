@@ -22,6 +22,7 @@ public class Level extends JPanel {
 	private LevelButton jb_normal;
 	private LevelButton jb_hard;
 	private BackButton jb_back;
+	private SoundEffect se;
 	
 	public Level() {
 		setBounds(100, 100, 800, 600);
@@ -42,12 +43,15 @@ public class Level extends JPanel {
 			public void mouseExited(MouseEvent e) {
 				jb_easy.setLight(false);
 				jb_easy.repaint();
+				
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				jb_easy.setLight(true);
 				jb_easy.repaint();
+				se = new SoundEffect(".//src//resources//sounds//enter_soundtrack.wav");
+				se.play();
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -75,6 +79,8 @@ public class Level extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 				jb_normal.setLight(true);
 				jb_normal.repaint();
+				se = new SoundEffect(".//src//resources//sounds//enter_soundtrack.wav");
+				se.play();
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -102,6 +108,8 @@ public class Level extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 				jb_hard.setLight(true);
 				jb_hard.repaint();
+				se = new SoundEffect(".//src//resources//sounds//enter_soundtrack.wav");
+				se.play();
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -129,6 +137,8 @@ public class Level extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 				jb_back.setLight(true);
 				jb_back.repaint();
+				se = new SoundEffect(".//src//resources//sounds//enter_soundtrack.wav");
+				se.play();
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
