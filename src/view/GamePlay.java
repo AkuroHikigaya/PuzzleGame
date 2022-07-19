@@ -146,6 +146,52 @@ public class GamePlay{
 				started(game);
 			}
 		});
+		game.getJb_newgame().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+				
+			}
+		});
+game.getJb_newgame().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+				
+			}
+		});
+game.getJb_pause().addActionListener(new ActionListener() {
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+		se.play();
+		
 	}
+});
+game.getJb_return().addActionListener(new ActionListener() {
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+		se.play();
+		
+	}
+});
+game.getJb_mainmenu().addActionListener(new ActionListener() {
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+		se.play();
+		
+	}
+});
+	}
+	
 	
 }
