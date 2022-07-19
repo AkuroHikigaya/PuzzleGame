@@ -8,9 +8,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import view.BoardGame;
+import view.SoundEffect;
 
 public class PuzzleListener implements MouseListener, KeyListener{
 	private BoardGame board_game;
+	private SoundEffect se;
 
 	public PuzzleListener(BoardGame board_game) {
 		this.board_game = board_game;
@@ -40,27 +42,36 @@ public class PuzzleListener implements MouseListener, KeyListener{
 					if(i-1>=0) {
 						if(board_game.getBlock()[i-1][j].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							board_game.moveDown();
+							se = new SoundEffect(".//src//resources//sounds//block_soundtrack.wav");
+							se.play();
 						}
 					}
 					/** Dưới*/
 					if(i+1<board_game.getBlock().length) {
 						if(board_game.getBlock()[i+1][j].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							board_game.moveUp();
+							se = new SoundEffect(".//src//resources//sounds//block_soundtrack.wav");
+							se.play();
 						}
 					}
 					/** Trái*/
 					if(j-1>=0) {
 						if(board_game.getBlock()[i][j-1].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							board_game.moveRight();
+							se = new SoundEffect(".//src//resources//sounds//block_soundtrack.wav");
+							se.play();
 						}
 					}
 					/** Phải*/
 					if(j+1<board_game.getBlock()[0].length) {
 						if(board_game.getBlock()[i][j+1].getNumber() == (board_game.getBlock().length)*(board_game.getBlock()[0].length)) {
 							board_game.moveLeft();
+							se = new SoundEffect(".//src//resources//sounds//block_soundtrack.wav");
+							se.play();
 						}
 					}
 					
+					board_game.checkWin(board_game.getBlock().length, board_game.getBlock()[0].length);
 				}
 			}
 		}
@@ -89,21 +100,28 @@ public class PuzzleListener implements MouseListener, KeyListener{
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_LEFT) {
-			board_game.moveLeft();
+			board_game.moveRight();
+			se = new SoundEffect(".//src//resources//sounds//block_soundtrack.wav");
+			se.play();
 		}
 
 		if (key == KeyEvent.VK_RIGHT) {
-			board_game.moveRight();
+			board_game.moveLeft();
+			se = new SoundEffect(".//src//resources//sounds//block_soundtrack.wav");
+			se.play();
 		}
 
 		if (key == KeyEvent.VK_UP) {
-			board_game.moveUp();
+			board_game.moveDown();
+			se = new SoundEffect(".//src//resources//sounds//block_soundtrack.wav");
+			se.play();
 		}
 
 		if (key == KeyEvent.VK_DOWN) {
-			board_game.moveDown();
+			board_game.moveUp();
+			se = new SoundEffect(".//src//resources//sounds//block_soundtrack.wav");
+			se.play();
 		}
-		System.out.println("Hết một lượt bấm! ");
 		board_game.checkWin(board_game.getBlock().length, board_game.getBlock()[0].length);
 	}
 

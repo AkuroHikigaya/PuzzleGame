@@ -27,4 +27,25 @@ public class SoundEffect {
 	public void stop() {
 		clip.stop();
 	}
+	
+	long clipTime;
+	public void pause() {
+		clipTime = clip.getMicrosecondPosition();
+		clip.stop();
+	}
+	
+	public void continues() {
+		clip.setMicrosecondPosition(clipTime);
+		clip.start();
+	}
+	
+	public boolean isPlayed() {
+		if(clip.getMicrosecondPosition()>0) return true;
+		return false;
+	}
+	
+	public void setStartup() {
+		clip.setMicrosecondPosition(0);
+	}
+	
 }

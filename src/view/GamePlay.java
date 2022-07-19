@@ -29,15 +29,14 @@ public class GamePlay{
 				se.play();
 			}
 		});
-		music_background = new SoundEffect(".//src//resources//sounds//main_soundtrack.wav");
-		music_background.play();
+		
 		framegame.setBounds(startgame.getBounds());
 		framegame.setResizable(false);
 		framegame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		framegame.setUndecorated(true);
 		framegame.setLocationRelativeTo(null);
 		framegame.setVisible(true);
-		startgame.getQuit().addActionListener(new ActionListener() {
+		startgame.getPower_button().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
@@ -54,23 +53,23 @@ public class GamePlay{
 	public static void main(String[] args) {
 		new GamePlay();
 	}
-	
+
 	public void started(JPanel rm) {
 		level = new Level();
 		framegame.remove(rm);
 		framegame.add(level);
-		
+
 		//Khi bấm vào Easy
 		level.getJb_easy().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				se = new SoundEffect(".//src//resources//sounds//startgame_soundtrack.wav");
 				se.play();
 				setLevel(1);
 			}
 		});
-		
+
 		//Khi bấm vào Normal
 		level.getJb_normal().addActionListener(new ActionListener() {
 			@Override
@@ -80,10 +79,10 @@ public class GamePlay{
 				setLevel(2);
 			}
 		});
-		
-//		Khi bấm vào Hard
+
+		//		Khi bấm vào Hard
 		level.getJb_hard().addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				se = new SoundEffect(".//src//resources//sounds//startgame_soundtrack.wav");
@@ -91,7 +90,7 @@ public class GamePlay{
 				setLevel(3);
 			}
 		});
-		
+
 		level.getJb_back().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -103,37 +102,35 @@ public class GamePlay{
 				framegame.setVisible(true);
 			}
 		});
-		
+
 		framegame.setVisible(true);
 	}
-	
-	
+
+
 	public void levelEasy() {
-//		System.out.println("In level Easy");
+		//		System.out.println("In level Easy");
 		game = new Game(4, 4);
 		framegame.remove(level);
 		framegame.add(game);
 		framegame.setVisible(true);
 	}
 	public void levelNormal() {
-//		System.out.println("In level Normal");
+		//		System.out.println("In level Normal");
 		game = new Game(6, 6);
 		framegame.remove(level);
 		framegame.add(game);
 		framegame.setVisible(true);
 	}
 	public void levelHard() {
-//		System.out.println("In level Hard");
+		//		System.out.println("In level Hard");
 		game = new Game(8, 8);
 		framegame.remove(level);
 		framegame.add(game);
 		framegame.setVisible(true);
 	}
-	
+
 	public void setLevel(int level) {
-		music_background.stop();
-		music_background = new SoundEffect(".//src//resources//sounds//play_soundtrack_1.wav");
-		music_background.play();
+		startgame.getMusic_background().stop();
 		if(level == 1) 
 			levelEasy();
 		if(level == 2)
@@ -146,6 +143,57 @@ public class GamePlay{
 				started(game);
 			}
 		});
+		game.getJb_newgame().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+				game.getBoard_game().randomBoard();
+			}
+		});
+		game.getJb_newgame().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+				
+			}
+		});
+		game.getJb_pause().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+
+			}
+		});
+		game.getJb_return().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+
+			}
+		});
+		game.getJb_mainmenu().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				se = new SoundEffect(".//src//resources//sounds//select_soundtrack.wav");
+				se.play();
+				startgame.getMusic_background().setStartup();
+				startgame.getMusic_background().play();
+				framegame.remove(game);
+				framegame.add(startgame);
+				startgame.repaint();
+				framegame.setVisible(true);
+			}
+		});
 	}
-	
+
+
 }

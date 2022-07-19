@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,16 +19,45 @@ import controller.PuzzleListener;
 public class BoardGame extends JPanel{
 	private JBlock block[][];
 	private int rule[][];
-	
+	private Timer count_time;
+	private JLabel time;
+	private int clock_count;
+	private int count_moves;
+	private JLabel moves;
+	private PuzzleListener pl;
 	
 	public BoardGame(int w, int h) {
+		// Bộ đếm
+		time = new JLabel("0000");
+		time.setForeground(Color.WHITE);
+		time.setFont(new Font("Arial", Font.BOLD, 30));
+		clock_count = 0;
+		count_time = new Timer(1000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clock_count++;
+				if(Integer.valueOf(time.getText())<9)
+					time.setText("000" + String.valueOf(clock_count));		
+				else if(Integer.valueOf(time.getText())>=9&&Integer.valueOf(time.getText())<99)
+					time.setText("00" + String.valueOf(clock_count));
+				else if(Integer.valueOf(time.getText())>=99&&Integer.valueOf(time.getText())<999)
+					time.setText("0" + String.valueOf(clock_count));
+				else
+					time.setText(String.valueOf(clock_count));
+			}
+		});
 		
+		//Moves
+		moves = new JLabel("0");
+		moves.setForeground(Color.WHITE);
+		moves.setFont(new Font("Arial", Font.BOLD, 30));
+		count_moves = 0;
 		
 		int count = 1;
 		rule = new int[w][h];
 		block = new JBlock[w][h];
 		this.setLayout(new GridLayout(w,h,0,0));
-		PuzzleListener pl = new PuzzleListener(this);
+		pl = new PuzzleListener(this);
 		for(int i=0; i<w; i++) {
 			for(int j=0; j<h; j++) {
 				
@@ -57,15 +87,6 @@ public class BoardGame extends JPanel{
 			}
 		}
 		randomBoard();
-		//Mượn chổ test rule
-				for(int i=0; i<w; i++) {
-					for(int j=0; j<h; j++) {
-						System.out.print(getRule()[i][j]+" ");
-					}
-					System.out.println();
-				}
-				
-				
 	}
 
 	public JBlock[][] getBlock() {
@@ -130,8 +151,21 @@ public class BoardGame extends JPanel{
 		block.setState(state);
 		block.setNumber(number);
 	}
-
+	
+	public void startCount(Timer t){
+		if(!t.isRunning()) {
+			t.start();
+		}
+	}
+	
+	public void countMoves() {
+		count_moves++;
+		moves.setText(String.valueOf(count_moves));
+	}
+	
 	public void moveDown() {
+		startCount(count_time);
+		countMoves();
 		for(int i=block.length-1; i>=0; i--) {
 			for (int j=0; j<block[0].length; j++) {
 				if(block[i][j].getNumber()== this.block.length*this.block[0].length) { //Nếu đã tìm thấy BlockNull
@@ -150,6 +184,8 @@ public class BoardGame extends JPanel{
 	}
 
 	public void moveUp() {
+		startCount(count_time);
+		countMoves();
 		for(int i=0; i<block.length; i++) {
 			for(int j=0; j<block[0].length; j++) {
 				if(block[i][j].getNumber() == this.block.length*this.block[0].length) {
@@ -166,6 +202,8 @@ public class BoardGame extends JPanel{
 	}
 	/**Di chuyển Block Null sang trái*/
 	public void moveLeft() {
+		startCount(count_time);
+		countMoves();
 		//		Xác định block null
 		for(int i=0; i<block.length; i++) {
 			for(int j=0; j<block[0].length; j++) {
@@ -189,6 +227,8 @@ public class BoardGame extends JPanel{
 
 
 	public void moveRight() {
+		startCount(count_time);
+		countMoves();
 //		Xác định block null
 		for(int i=0; i<block.length; i++) {
 			for(int j=block[0].length-1; j>=0; j--) {
@@ -228,6 +268,52 @@ public class BoardGame extends JPanel{
 				break;
 			}
 		}
+		count_moves = 0;
+		moves.setText("0");
+		time.setText("0000");
+		clock_count = 0;
+		count_time.restart();
+		count_time.stop();
+	}
+
+	public JLabel getTime() {
+		return time;
+	}
+
+	public void setTime(JLabel time) {
+		this.time = time;
+	}
+
+	public JLabel getMoves() {
+		return moves;
+	}
+
+	public void setMoves(JLabel moves) {
+		this.moves = moves;
+	}
+
+	public Timer getCount_time() {
+		return count_time;
+	}
+
+	public void setCount_time(Timer count_time) {
+		this.count_time = count_time;
+	}
+
+	public int getCount_moves() {
+		return count_moves;
+	}
+
+	public void setCount_moves(int count_moves) {
+		this.count_moves = count_moves;
+	}
+
+	public PuzzleListener getPl() {
+		return pl;
+	}
+
+	public void setPl(PuzzleListener pl) {
+		this.pl = pl;
 	}
 	
 	

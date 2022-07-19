@@ -18,9 +18,11 @@ public class OnGameButton extends JButton {
 	private BufferedImage pause_button_light;
 	private BufferedImage return_button;
 	private BufferedImage return_button_light;
+	private BufferedImage continue_button;
+	private BufferedImage continue_button_light;
 	private String state;
 	private boolean light;
-	
+	private boolean pause;
 	
 	public OnGameButton (String state) {
 			this.light = false;
@@ -32,6 +34,8 @@ public class OnGameButton extends JButton {
 				newgame_button_light = ImageIO.read(new File("src/resources/images/newgame_button_light.png"));
 				pause_button = ImageIO.read(new File("src/resources/images/pause_button.png"));
 				pause_button_light = ImageIO.read(new File("src/resources/images/pause_button_light.png"));
+				continue_button = ImageIO.read(new File("src/resources/images/continue_button.png"));
+				continue_button_light = ImageIO.read(new File("src/resources/images/continue_button_light.png"));
 				return_button = ImageIO.read(new File("src/resources/images/return_button.png"));
 				return_button_light = ImageIO.read(new File("src/resources/images/return_button_light.png"));
 				
@@ -39,7 +43,7 @@ public class OnGameButton extends JButton {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			setPreferredSize(new Dimension(150,50));
+			setPreferredSize(new Dimension(140,50));
 		}
 	
 	
@@ -51,10 +55,17 @@ public class OnGameButton extends JButton {
 				g.drawImage(newgame_button, 0, 0, getPreferredSize().width, getPreferredSize().height, null);
 		}
 		if(state.equals("Pause")) {
-			if(light)
-				g.drawImage(pause_button_light, 0, 0, getPreferredSize().width, getPreferredSize().height, null);				
-			else
-				g.drawImage(pause_button, 0, 0, getPreferredSize().width, getPreferredSize().height, null);
+			if(pause) {
+				if(light)
+					g.drawImage(continue_button_light, 0, 0, getPreferredSize().width, getPreferredSize().height, null);				
+				else
+					g.drawImage(continue_button, 0, 0, getPreferredSize().width, getPreferredSize().height, null);
+			}else {
+				if(light)
+					g.drawImage(pause_button_light, 0, 0, getPreferredSize().width, getPreferredSize().height, null);				
+				else
+					g.drawImage(pause_button, 0, 0, getPreferredSize().width, getPreferredSize().height, null);
+			}
 		}
 		if(state.equals("Return")) {
 			if(light)
@@ -91,6 +102,16 @@ public class OnGameButton extends JButton {
 
 	public void setLight(boolean light) {
 		this.light = light;
+	}
+
+
+	public boolean isPause() {
+		return pause;
+	}
+
+
+	public void setPause(boolean pause) {
+		this.pause = pause;
 	}
 
 

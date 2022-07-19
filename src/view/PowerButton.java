@@ -22,7 +22,7 @@ public class PowerButton extends JButton{
 			e.printStackTrace();
 		}
 
-		setPreferredSize(new Dimension(50,50));
+		setPreferredSize(new Dimension(45,45));
 	}
 
 	public void paint(Graphics g) {
