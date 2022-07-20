@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,6 +27,8 @@ public class BoardGame extends JPanel{
 	private int count_moves;
 	private JLabel moves;
 	private PuzzleListener pl;
+	private WinFrame winner;
+	private SoundEffect se;
 	
 	public BoardGame(int w, int h) {
 		// Bộ đếm
@@ -115,11 +119,44 @@ public class BoardGame extends JPanel{
 					count++;
 			}
 		}
-		if(count == w*h)
-			JOptionPane.showMessageDialog(null,
-					"Message Example",
-					"Title Example",
-					JOptionPane.INFORMATION_MESSAGE);
+		if(count == w*h) {
+			se = new SoundEffect(".//src//resources//sounds//win.wav");
+			se.play();
+			count_time.stop();
+			for(int i=0; i<w; i++) {
+				for(int j=0; j<h; j++) {
+					block[i][j].removeMouseListener(pl);
+					block[i][j].removeKeyListener(pl);
+				}
+			}
+			
+			winner = new WinFrame(count_moves, clock_count);
+			winner.getYes_button().addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					randomBoard();
+					for(int i=0; i<w; i++) {
+						for(int j=0; j<h; j++) {
+							block[i][j].addMouseListener(pl);
+							block[i][j].addKeyListener(pl);
+						}
+					}
+					winner.getFrame().dispose();
+				}
+			});
+			winner.getNo_button().addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					for(int i=0; i<w; i++) {
+						for(int j=0; j<h; j++) {
+							block[i][j].addMouseListener(pl);
+							block[i][j].addKeyListener(pl);
+						}
+					}
+					winner.getFrame().dispose();
+				}
+			});
+		}
 			
 	}
 	

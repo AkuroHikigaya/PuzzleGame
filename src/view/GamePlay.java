@@ -32,7 +32,7 @@ public class GamePlay{
 		
 		framegame.setBounds(startgame.getBounds());
 		framegame.setResizable(false);
-		framegame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		framegame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		framegame.setUndecorated(true);
 		framegame.setLocationRelativeTo(null);
 		framegame.setVisible(true);

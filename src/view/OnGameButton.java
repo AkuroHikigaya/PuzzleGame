@@ -20,6 +20,7 @@ public class OnGameButton extends JButton {
 	private BufferedImage return_button_light;
 	private BufferedImage continue_button;
 	private BufferedImage continue_button_light;
+
 	private String state;
 	private boolean light;
 	private boolean pause;
@@ -38,7 +39,6 @@ public class OnGameButton extends JButton {
 				continue_button_light = ImageIO.read(new File("src/resources/images/continue_button_light.png"));
 				return_button = ImageIO.read(new File("src/resources/images/return_button.png"));
 				return_button_light = ImageIO.read(new File("src/resources/images/return_button_light.png"));
-				
 				
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -79,6 +79,7 @@ public class OnGameButton extends JButton {
 			else
 				g.drawImage(mainmenu_button, 0, 0, getPreferredSize().width, getPreferredSize().height, null);
 		}
+		
 	}
 	
 	
