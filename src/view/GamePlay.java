@@ -8,15 +8,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.Images;
+
 public class GamePlay{
 	private JFrame framegame;
 	private StartGame startgame;
 	private Level level;
 	private Game game;
+	private Images img;
 	private SoundEffect se;
 	private SoundEffect music_background;
 	public GamePlay() {
+		img = new Images();
 		framegame = new JFrame();
+		framegame.setIconImage(img.getList_imgs().get("img_icon"));
 		framegame.setTitle("Game Puzzle");
 		startgame = new StartGame();
 		framegame.add(startgame);

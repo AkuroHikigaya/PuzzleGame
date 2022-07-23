@@ -80,7 +80,9 @@ public class Game extends JPanel{
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if(jb_pause.isPause()) {
-					music_background.continues();;
+					music_background.continues();
+					jb_sound.setTurn_on(true);
+					jb_sound.repaint();
 					board_game.getCount_time().start();
 					for(int i=0; i<w; i++) {
 						for(int j=0; j<h; j++) {
@@ -88,6 +90,7 @@ public class Game extends JPanel{
 							board_game.getBlock()[i][j].addKeyListener(board_game.getPl());
 						}
 					}
+					
 					jb_pause.setPause(false);
 				}else {
 					music_background.pause();

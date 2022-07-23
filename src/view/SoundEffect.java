@@ -48,4 +48,9 @@ public class SoundEffect {
 		clip.setMicrosecondPosition(0);
 	}
 	
+	public boolean isPause() {
+		if(clip.isRunning()) return false;
+		return true;
+	}
+	
 }
